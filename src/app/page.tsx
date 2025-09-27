@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -6,7 +7,7 @@ import { UrlForm } from '@/components/url-form';
 import { WebViewer } from '@/components/web-viewer';
 
 export default function Home() {
-  const [url, setUrl] = useState('https://en.m.wikipedia.org/wiki/Main_Page');
+  const [url, setUrl] = useState('https://en.m.wikipedia.org/wiki/Special:Random');
   const [time, setTime] = useState('');
 
   useEffect(() => {

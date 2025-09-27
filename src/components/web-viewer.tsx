@@ -24,7 +24,7 @@ export function WebViewer({ url }: WebViewerProps) {
     const interval = setInterval(() => {
       setIsLoading(true);
       setRefreshKey(Date.now());
-    }, 20000);
+    }, 10000); // Refresh every 10 seconds
 
     return () => clearInterval(interval);
   }, [url]);
