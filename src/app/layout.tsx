@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster"
 export const metadata: Metadata = {
   title: 'LiveView Mobile',
   description: 'A self-updating mobile application view.',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({

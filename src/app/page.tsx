@@ -2,13 +2,36 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Wifi, Battery, Aperture } from 'lucide-react';
+import { Wifi, Battery, Aperture, Download } from 'lucide-react';
 import { UrlForm } from '@/components/url-form';
 import { WebViewer } from '@/components/web-viewer';
+import { Button } from '@/components/ui/button';
+
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: Array<string>;
+  readonly userChoice: Promise<{
+    outcome: 'accepted' | 'dismissed',
+    platform: string,
+  }>;
+  prompt(): Promise<void>;
+}
 
 export default function Home() {
   const [url, setUrl] = useState('https://en.m.wikipedia.org/wiki/Special:Random');
   const [time, setTime] = useState('');
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e as BeforeInstallPromptEvent);
+    };
+    window.addEventListener('beforeinstallprompt', handler);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handler);
+    };
+  }, []);
 
   useEffect(() => {
     const update = () => {
@@ -21,6 +44,19 @@ export default function Home() {
     const timer = setInterval(update, 30000);
     return () => clearInterval(timer);
   }, []);
+
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+      } else {
+        console.log('User dismissed the A2HS prompt');
+      }
+      setDeferredPrompt(null);
+    }
+  };
 
   return (
     <main className="flex min-h-screen w-full flex-col items-center justify-center bg-background p-4">
@@ -37,11 +73,19 @@ export default function Home() {
             </div>
 
             {/* App Header */}
-            <header className="flex items-center justify-center gap-2 p-3 border-b">
-                <Aperture className="w-6 h-6 text-primary" />
-                <h1 className="text-xl font-bold font-headline text-foreground">
-                    LiveView Mobile
-                </h1>
+            <header className="flex items-center justify-between gap-2 p-3 border-b">
+                <div className="flex items-center gap-2">
+                    <Aperture className="w-6 h-6 text-primary" />
+                    <h1 className="text-xl font-bold font-headline text-foreground">
+                        LiveView Mobile
+                    </h1>
+                </div>
+                {deferredPrompt && (
+                  <Button variant="outline" size="sm" onClick={handleInstallClick}>
+                    <Download className="mr-2 h-4 w-4" />
+                    Save
+                  </Button>
+                )}
             </header>
 
             {/* App Body */}

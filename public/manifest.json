@@ -1,0 +1,9 @@
+{
+  "name": "LiveView Mobile",
+  "short_name": "LiveView",
+  "description": "A self-updating mobile application view.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#111827"
+}
