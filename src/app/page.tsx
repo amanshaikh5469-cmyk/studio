@@ -95,10 +95,10 @@ export default function Home() {
 
             {/* App Body */}
             <div className="flex-1 flex flex-col bg-muted/20 overflow-hidden">
-                <AdBanner adSlot="YYYYYYYYYY" className="w-full" />
+                <AdBanner adSlot="ca-app-pub-1936398628509536/4682415491" className="w-full" />
                 <UrlForm currentUrl={url} onUrlChange={setUrl} />
                 <WebViewer url={url} />
-                <AdBanner adSlot="ZZZZZZZZZZ" className="w-full" />
+                <AdBanner adSlot="ca-app-pub-1936398628509536/3369333825" className="w-full" />
             </div>
           </div>
       </div>
