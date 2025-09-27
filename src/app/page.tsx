@@ -6,7 +6,6 @@ import { Wifi, Battery, Download } from 'lucide-react';
 import { UrlForm } from '@/components/url-form';
 import { WebViewer } from '@/components/web-viewer';
 import { Button } from '@/components/ui/button';
-import { AdBanner } from '@/components/ad-banner';
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: Array<string>;
@@ -90,10 +89,8 @@ export default function Home() {
 
             {/* App Body */}
             <div className="flex-1 flex flex-col bg-muted/20 overflow-hidden">
-                <AdBanner adClient="ca-pub-XXXXXXXXXXXXXXXX" adSlot="YYYYYYYYYY" />
                 <UrlForm currentUrl={url} onUrlChange={setUrl} />
                 <WebViewer url={url} />
-                <AdBanner adClient="ca-pub-XXXXXXXXXXXXXXXX" adSlot="ZZZZZZZZZZ" />
             </div>
           </div>
       </div>
