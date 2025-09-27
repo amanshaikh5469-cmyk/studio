@@ -21,6 +21,7 @@ export default function Home() {
   const [url, setUrl] = useState('https://en.m.wikipedia.org/wiki/Special:Random');
   const [time, setTime] = useState('');
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const [isAppInstalled, setIsAppInstalled] = useState(false);
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -28,6 +29,10 @@ export default function Home() {
       setDeferredPrompt(e as BeforeInstallPromptEvent);
     };
     window.addEventListener('beforeinstallprompt', handler);
+
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setIsAppInstalled(true);
+    }
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handler);
@@ -80,10 +85,10 @@ export default function Home() {
                         LiveView Mobile
                     </h1>
                 </div>
-                {deferredPrompt && (
+                {deferredPrompt && !isAppInstalled && (
                   <Button variant="outline" size="sm" onClick={handleInstallClick}>
                     <Download className="mr-2 h-4 w-4" />
-                    Save
+                    Install App
                   </Button>
                 )}
             </header>
