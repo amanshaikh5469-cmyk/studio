@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Wifi, Battery, Aperture, Download } from 'lucide-react';
+import { Wifi, Battery, Download } from 'lucide-react';
 import { UrlForm } from '@/components/url-form';
 import { WebViewer } from '@/components/web-viewer';
 import { Button } from '@/components/ui/button';
@@ -75,7 +75,6 @@ export default function Home() {
             {/* App Header */}
             <header className="flex items-center justify-between gap-2 p-3 border-b">
                 <div className="flex items-center gap-2">
-                    <Aperture className="w-6 h-6 text-primary" />
                     <h1 className="text-xl font-bold font-headline text-foreground">
                         LiveView Mobile
                     </h1>
