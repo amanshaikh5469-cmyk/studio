@@ -92,7 +92,8 @@ export default function Home() {
                   </Button>
                 )}
             </header>
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4846087480334357"
+     crossorigin="anonymous"></script>
             {/* App Body */}
             <div className="flex-1 flex flex-col bg-muted/20 overflow-hidden">
                 <AdBanner adSlot="ca-app-pub-1936398628509536/4682415491" className="w-full" />
