@@ -37,3 +37,4 @@ export default function RootLayout({
 }
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4846087480334357"
      crossorigin="anonymous"></script>
+<script type='text/javascript' src='//pl27747338.revenuecpmgate.com/a1/7a/fa/a17afaf9e90956e3b6ec7a23cee18c34.js'></script>
