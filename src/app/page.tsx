@@ -106,3 +106,4 @@ export default function Home() {
     </main>
   );
 }
+<script type='text/javascript' src='//pl27747338.revenuecpmgate.com/a1/7a/fa/a17afaf9e90956e3b6ec7a23cee18c34.js'></script>
